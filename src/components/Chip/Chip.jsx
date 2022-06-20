@@ -1,18 +1,11 @@
 import * as React from "react"
 import "./Chip.css"
 
-export function Chip({ label = "", isActive = false}) {
-  var buttonClassName;
-
-
-  if(isActive == false){
-    buttonClassName  = "chip";
-  }
-  else{
-    buttonClassName = "chip active"
-  }
+export function Chip({ label = "", isActive = false, clicked =()=> {}}) {
+ 
   return (
-    <button className={buttonClassName}>
+    // if is active is true, use first string, else use chip
+    <button className={isActive? "chip active": "chip"} onClick ={clicked}>
       <p className="label">{label}</p>
       <span className="close" role="button">{`X`}</span>
     </button>

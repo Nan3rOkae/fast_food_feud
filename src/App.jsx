@@ -23,15 +23,20 @@ export const appInfo = {
 const { data, categories, restaurants } = createDataSet()
 
 export function App() {
+
+  const [category, setcategories] = React.useState(null)
+  const [restaraunt, setrestaraunt] = React.useState(null)
+ 
+ console.log(category)
+  
   return (
     <main className="App">
       {/* CATEGORIES COLUMN */}
       <div className="CategoriesColumn col">
         <div className="categories options">
           <h2 className="title">Categories</h2>
-
-              {categories.map((category, index)=>
-                <Chip key = {index} label = {category}/>
+                 {categories.map((cat, index)=>
+                <Chip key = {index} chip = {index} label = {cat} isActive = {category === cat} clicked ={() => {setcategories(cat)}}/>
 ) }
         </div>
       </div>
@@ -44,8 +49,8 @@ export function App() {
         <div className="RestaurantsRow">
           <h2 className="title">Restaurants</h2>
           <div className="restaurants options">        
-               {categories.map((category, index)=>
-                <Chip key = {index} chip = {index} label = {category}/>
+               {restaurants.map((rest, index)=>
+                <Chip key = {index} chip = {index} label = {rest} isActive = {restaraunt === rest} clicked ={() => {setrestaraunt(rest)}}/>
 ) }</div>
         </div>
 
@@ -69,5 +74,4 @@ export function App() {
     </main>
   )
 }
-
 export default App
